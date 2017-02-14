@@ -32,11 +32,12 @@ tags : [Unity, Android, Firebase, FCM]
 
 
  이후 순서
+ 
  1. firebase 작동 원리
+ 
  처음 앱이 실행되면 manifest에 등록되어있는 firebase provider가 돌아가기 시작한다. 여기에서 firebase app을 초기화 시키고, 성공하면 push token을 받을 수 있는 상태가 된다. 일반적으로 안드로이드에서 gradle에 한 줄 추가하는 방식으로 firebase를 추가하면, firebase app 이 포함된 라이브러리가 빌드에 포함되는데, 여기에 앞에서 말한 firebase provider가 정의되어있다. 사용자의 눈에 보이지 않게 몰래 슥 들어가서 제 역할을 하게 되는 것이다. 때문에 이를 추가하는 유저의 입장에서는, gradle 스크립트에 firebase mesaging 컴파일 하라고 한 줄 등록하고 push message handler만 세팅하면 자동으로 앱이 푸쉬 토큰을 세팅하고 푸쉬를 받을 수 있는 상태가 되는 마법을 경험하게 된다.
 
  하지만 빌드를 할 때 포함시키는 google-service.json 파일에 인증 값이 무언가 잘못되었을 때, 컴파일 단계에서는 이를 알 수 없고 런타임에 문제가 발생한다. 인증이 실패하면 firebase provider가 실행될 때 `Fail`이라는 로그만 한 줄 남고, 어디에서 문제가 생긴건지에 대한 이유는 알려주지 않는다. 
-
 
  2. 안드로이드 라이브러리 파일이 어떻게 Unity에 이식되는가
  유니티에서 gradle 빌드를 지원한게 그리 오래되지는 않았다. gradle 스크립트를 활용하여 빌드하도록 한 것에 한정해서 설명하려고 한다.
